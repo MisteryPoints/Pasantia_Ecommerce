@@ -56,9 +56,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       setLoading(true);
       await axios.patch(`/api/stores/${params.storeId}`, data);
       router.refresh();
-      toast.success('Store updated.');
+      toast.success('Tienda Actuallizada');
     } catch (error: any) {
-      toast.error('Something went wrong.');
+      toast.error('Algo malo ha ocurrido.');
     } finally {
       setLoading(false);
     }
@@ -70,9 +70,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       await axios.delete(`/api/stores/${params.storeId}`);
       router.refresh();
       router.push('/');
-      toast.success('Store deleted.');
+      toast.success('Tienda Eliminada.');
     } catch (error: any) {
-      toast.error('Make sure you removed all products and categories first.');
+      toast.error('Asegurate de eliminar los productos y categorias de la Tienda.');
     } finally {
       setLoading(false);
       setOpen(false);
@@ -88,7 +88,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
       loading={loading}
     />
      <div className="flex items-center justify-between">
-        <Heading title="Store settings" description="Manage store preferences" />
+        <Heading title="Configuración de la tienda" description="Maneja las preferencias de la tienda" />
         <Button
           disabled={loading}
           variant="destructive"
@@ -107,9 +107,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nombre</FormLabel>
                   <FormControl>
-                    <Input disabled={loading} placeholder="Store name" {...field} />
+                    <Input disabled={loading} placeholder="Nombre de la tienda" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -117,7 +117,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
             />
           </div>
           <Button disabled={loading} className="ml-auto" type="submit">
-            Save changes
+            Guardar Cambios
           </Button>
         </form>
       </Form>

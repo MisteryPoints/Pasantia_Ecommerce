@@ -15,15 +15,15 @@ export async function PATCH(
     const { name } = body;
 
     if (!userId) {
-      return new NextResponse("Unauthenticated", { status: 403 });
+      return new NextResponse("Sin Autenticación", { status: 403 });
     }
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse("Nombre es Requerido", { status: 400 });
     }
 
     if (!params.storeId) {
-      return new NextResponse("Store id is required", { status: 400 });
+      return new NextResponse("ID de Tienda es Requerido", { status: 400 });
     }
 
     const store = await prismadb.store.updateMany({
@@ -39,7 +39,7 @@ export async function PATCH(
     return NextResponse.json(store);
   } catch (error) {
     console.log('[STORE_PATCH]', error);
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse("Error Interno", { status: 500 });
   }
 };
 
@@ -52,11 +52,11 @@ export async function DELETE(
     const { userId } = auth();
 
     if (!userId) {
-      return new NextResponse("Unauthenticated", { status: 403 });
+      return new NextResponse("Sin Autenticación", { status: 403 });
     }
 
     if (!params.storeId) {
-      return new NextResponse("Store id is required", { status: 400 });
+      return new NextResponse("ID de Tienda es Requerido", { status: 400 });
     }
 
     const store = await prismadb.store.deleteMany({
@@ -69,6 +69,6 @@ export async function DELETE(
     return NextResponse.json(store);
   } catch (error) {
     console.log('[STORE_DELETE]', error);
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse("Error Interno", { status: 500 });
   }
 };

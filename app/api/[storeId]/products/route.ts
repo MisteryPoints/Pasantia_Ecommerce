@@ -15,35 +15,35 @@ export async function POST(
     const { name, price, categoryId, colorId, sizeId, images, isFeatured, isArchived } = body;
 
     if (!userId) {
-      return new NextResponse("Unauthenticated", { status: 403 });
+      return new NextResponse("Sin Autenticación", { status: 403 });
     }
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse("Nombre es Requerido", { status: 400 });
     }
 
     if (!images || !images.length) {
-      return new NextResponse("Images are required", { status: 400 });
+      return new NextResponse("Imagen es Requerida", { status: 400 });
     }
 
     if (!price) {
-      return new NextResponse("Price is required", { status: 400 });
+      return new NextResponse("Precio es Requerido", { status: 400 });
     }
 
     if (!categoryId) {
-      return new NextResponse("Category id is required", { status: 400 });
+      return new NextResponse("ID de Categoria es Requerido", { status: 400 });
     }
 
     if (!colorId) {
-      return new NextResponse("Color id is required", { status: 400 });
+      return new NextResponse("ID de Color es Requerido", { status: 400 });
     }
 
     if (!sizeId) {
-      return new NextResponse("Size id is required", { status: 400 });
+      return new NextResponse("ID de Tamaño es Requerido", { status: 400 });
     }
 
     if (!params.storeId) {
-      return new NextResponse("Store id is required", { status: 400 });
+      return new NextResponse("ID de Tienda es Requerida", { status: 400 });
     }
 
     const storeByUserId = await prismadb.store.findFirst({
@@ -54,7 +54,7 @@ export async function POST(
     });
 
     if (!storeByUserId) {
-      return new NextResponse("Unauthorized", { status: 405 });
+      return new NextResponse("Sin Autorización", { status: 405 });
     }
 
     const product = await prismadb.product.create({
@@ -80,7 +80,7 @@ export async function POST(
     return NextResponse.json(product);
   } catch (error) {
     console.log('[PRODUCTS_POST]', error);
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse("Error Interno", { status: 500 });
   }
 };
 
@@ -96,7 +96,7 @@ export async function GET(
     const isFeatured = searchParams.get('isFeatured');
 
     if (!params.storeId) {
-      return new NextResponse("Store id is required", { status: 400 });
+      return new NextResponse("ID de Tienda es Requerida", { status: 400 });
     }
 
     const products = await prismadb.product.findMany({
@@ -122,6 +122,6 @@ export async function GET(
     return NextResponse.json(products);
   } catch (error) {
     console.log('[PRODUCTS_GET]', error);
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse("Error Interno", { status: 500 });
   }
 };

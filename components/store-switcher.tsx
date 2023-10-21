@@ -55,7 +55,7 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
           size="sm"
           role="combobox"
           aria-expanded={open}
-          aria-label="Select a store"
+          aria-label="Selecciona Una Tienda"
           className={cn("w-[200px] justify-between", className)}
         >
           <Store className="mr-2 h-4 w-4" />
@@ -66,9 +66,9 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
       <PopoverContent className="w-[200px] p-0">
         <Command>
           <CommandList>
-            <CommandInput placeholder="Search store..." />
-            <CommandEmpty>No store found.</CommandEmpty>
-            <CommandGroup heading="Stores">
+            <CommandInput placeholder="Buscar Tiendas..." />
+            <CommandEmpty>Tienda no Encontrada.</CommandEmpty>
+            <CommandGroup heading="Tiendas">
               {formattedItems.map((store) => (
                 <CommandItem
                   key={store.value}
@@ -99,7 +99,7 @@ export default function StoreSwitcher({ className, items = [] }: StoreSwitcherPr
                 }}
               >
                 <PlusCircle className="mr-2 h-5 w-5" />
-                Create Store
+                Crear Tienda
               </CommandItem>
             </CommandGroup>
           </CommandList>

@@ -13,11 +13,11 @@ export async function POST(
     const { name } = body;
 
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 403 });
+      return new NextResponse("Sin Autorización", { status: 403 });
     }
 
     if (!name) {
-      return new NextResponse("Name is required", { status: 400 });
+      return new NextResponse("Nombre es Requerido", { status: 400 });
     }
 
     const store = await prismadb.store.create({
@@ -30,6 +30,6 @@ export async function POST(
     return NextResponse.json(store);
   } catch (error) {
     console.log('[STORES_POST]', error);
-    return new NextResponse("Internal error", { status: 500 });
+    return new NextResponse("Error Interno", { status: 500 });
   }
 };
