@@ -46,7 +46,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
   const [loading, setLoading] = useState(false);
 
   const title = initialData ? 'Editar Cartelera' : 'Crear Cartelera';
-  const description = initialData ? 'Editar una Cartelera' : 'Agregar una Nueva Carteleraa';
+  const description = initialData ? 'Editar una Cartelera' : 'Agregar una Nueva Cartelera';
   const toastMessage = initialData ? 'Cartelera Creada' : 'Cartelera Creada';
   const action = initialData ? 'Guardar Cambios' : 'Crear Cartelera';
 
